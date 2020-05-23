@@ -1,0 +1,105 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+
+namespace TourneyTable
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            List<string> playerName = new List<string>();
+            List<int> playerPoints = new List<int>();
+        Start:
+            Console.WriteLine("Please select an option.");
+            Console.WriteLine("1. Enter a player.");
+            Console.WriteLine("2. Print a player points.");
+            Console.WriteLine("3. Change a player points.");
+            Console.WriteLine("4. Print game average.");
+            Console.WriteLine("5. Print game score.");
+            for (int option = Convert.ToInt32(Console.ReadLine()); option <= 5; option++)
+            {
+                if (option == 1)
+                {
+                    goto optionOne;
+                }
+                if (option == 2)
+                {
+                    goto optionTwo;
+                }
+                if (option == 3)
+                {
+                    goto optionThree;
+                }
+                if (option == 4)
+                {
+                    goto optionFour;
+                }
+                if (option == 5)
+                {
+                    goto optionFive;
+                }
+            }
+            Console.WriteLine("Invalid Selection. Please select 1-5. Press a key to continue.");
+            Console.ReadKey();
+            Console.Clear();
+            goto Start;
+        optionOne:
+            Console.Clear();
+            Console.WriteLine("Please input player name.");
+            playerName.Add(Console.ReadLine());
+            Console.WriteLine("Please input player points.");
+            playerPoints.Add(Convert.ToInt32(Console.ReadLine()));
+            Console.Clear();
+            goto Start;
+        optionTwo:
+            Console.Clear();
+            Console.WriteLine("Please type number of player.");
+            for (int index = 0; index < playerName.Count; index++)
+            {
+                Console.WriteLine(playerName[index]);
+            }
+            int tempStudentNum = Convert.ToInt32(Console.ReadLine());
+            Console.WriteLine(playerName[tempStudentNum - 1] + " has a points of " + playerPoints[tempStudentNum - 1]);
+            Console.WriteLine("Press any key to continue");
+            Console.ReadKey();
+            Console.Clear();
+            goto Start;
+        optionThree:
+            Console.Clear();
+            Console.WriteLine("Please type number of player.");
+            for (int index = 0; index < playerName.Count; index++)
+            {
+                Console.WriteLine(playerName[index]);
+            }
+            int tempStudentNum1 = Convert.ToInt32(Console.ReadLine());
+            Console.WriteLine("What is " + playerName[tempStudentNum1 - 1] + "'s new points?");
+            int tempNewGrade = Convert.ToInt32(Console.ReadLine());
+            playerPoints[tempStudentNum1 - 1] = tempNewGrade;
+            Console.WriteLine("Press any key to continue");
+            Console.ReadKey();
+            Console.Clear();
+            goto Start;
+        optionFour:
+            Console.WriteLine("The average of the game is " + (playerPoints.Sum() / (playerPoints.Count)));
+            Console.WriteLine("Press any key to continue");
+            Console.ReadKey();
+            Console.Clear();
+            goto Start;
+        optionFive:
+            Console.Clear();
+            playerPoints.Sort();
+            playerPoints.Reverse();
+            int tempStudentsCount = playerPoints.Count();
+            for (int index = 0; index < tempStudentsCount; index++)
+            {
+                Console.WriteLine(playerName[index] + '\t' + playerPoints[index]);
+            }
+            Console.WriteLine("Press any key to continue");
+            Console.ReadKey();
+            Console.Clear();
+            goto Start;
+            ;
+        }
+    }
+}
